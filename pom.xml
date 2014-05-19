@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.kit.ipd.swt1.stopwatch</groupId>
+	<artifactId>StopwatchFirmware</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>edu.kit.ipd.swt1.stopwatch</groupId>
+			<artifactId>framework</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<parent>
+		<groupId>edu.kit.ipd.swt1.ss2014</groupId>
+		<artifactId>uebungsparent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<repositories>
+		<repository>
+			<id>swt1ss2014</id>
+			<name>SWT1-SS2014</name>
+			<url>http://i41vm-automodel.ipd.kit.edu/nexus/content/repositories/swt1ss2014/</url>
+		</repository>
+	</repositories>
+</project>
