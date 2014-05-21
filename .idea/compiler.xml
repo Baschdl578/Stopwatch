@@ -25,6 +25,9 @@
         <module name="Stopwatch" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Stopwatch" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
