@@ -18,7 +18,6 @@ public class StopwatchFirmware implements IFirmware {
      * 6 is for stopped stopwatch with saved SplitTime (showing SplitTime)
      * 7 is for stopped stopwatch with saved SplitTime (showing stopwatch)
      *
-     *
      */
     public byte state = 0;
     private IClockControl control;
