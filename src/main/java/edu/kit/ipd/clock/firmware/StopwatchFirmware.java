@@ -126,25 +126,66 @@ public class StopwatchFirmware implements IFirmware {
             if (button.equals(ButtonID.C)) {
                 control.setDisplaySplitTime(true);
                 state = 6;
-                return;
             } else if (button.equals(ButtonID.B)) {
                 control.setIncrementTime(true);
                 state = 5;
-                return;
             } else if (button.equals(ButtonID.A)) {
                 control.resetTimes();
                 state = 1;
-                return;
-            } else return;
+            }
         }
     }
 
 
     public String[] getButtonDescriptions() {
         String[] out = new String[3];
-        out[0] = "On/Off";
-        out[1] = "Start/Stop";
-        out[2] = "Save Splittime";
+        if (state == 0) {
+            out[0] = "On";
+            out[1] = "No Function";
+            out[2] = "No Function";
+        }
+
+        if (state == 1) {
+            out[0] = "Off";
+            out[1] = "Start Stopwatch";
+            out[2] = "No Function";
+        }
+
+        if (state == 2) {
+            out[0] = "No Function";
+            out[1] = "Stop Stopwatch";
+            out[2] =  "Save and Display Splittime";
+        }
+
+        if (state == 3) {
+            out[0] = "Reset Stopwatch";
+            out[1] = "Restart Stopwatch";
+            out[2] = "No Function";
+        }
+
+        if (state == 4) {
+            out[0] = "No Function";
+            out[1] = "Stop Stopwatch and Display Total Time";
+            out[2] = "Display Total Time";
+        }
+
+        if (state == 5) {
+            out[0] = "No Function";
+            out[1] = "Stop Stopwatch";
+            out[2] = "Save and Display Splittime";
+        }
+
+        if (state == 6) {
+            out[0] = "Reset Stopwatch";
+            out[1] = "No Function";
+            out[2] = "Display Total Time";
+        }
+
+        if (state == 7) {
+            out[0] = "Reset Stopwatch";
+            out[1] = "Restart Stopwatch";
+            out[2] = "Display Splittime";
+        }
         return out;
     }
 
