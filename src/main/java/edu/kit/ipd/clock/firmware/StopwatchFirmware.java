@@ -5,33 +5,63 @@ import edu.kit.ipd.clock.IClockControl;
 import edu.kit.ipd.clock.IFirmware;
 import edu.kit.ipd.clock.ui.ClockFrame;
 
+/**
+ * Firmware for a stopwatch
+ * @version 1.0
+ * @author Sebastian Schindler
+ */
 public class StopwatchFirmware implements IFirmware {
-    /**
-     * Defines the state of the watch
-     *
-     * 0 is for off
-     * 1 is for on
-     * 2 is for simple stopwatch started
-     * 3 is for simple stopwatch stopped
-     * 4 is for running stopwatch with saved SplitTime (showing SplitTime)
-     * 5 is for running stopwatch with saved SplitTime (showing stopwatch)
-     * 6 is for stopped stopwatch with saved SplitTime (showing SplitTime)
-     * 7 is for stopped stopwatch with saved SplitTime (showing stopwatch)
-     *
-     */
-    public byte state = 0;
+
     private IClockControl control;
+
+    protected StopwatchState current = new StateOFF(this);
 
 	public static void main(String[] args) {
 		ClockFrame clock = new ClockFrame(new StopwatchFirmware());
 		clock.setVisible(true);
 	}
 
-
+    /**
+     * Sets the IClockControl for the stopwatch
+     * @param control IClockControl to set
+     */
     public void setClockControl(IClockControl control) {
         this.control = control;
     }
 
+    /**
+     * Calls method for button A pressed
+     */
+    public void buttonA() {
+        current.buttonA();
+        current.changeState();
+    }
+
+    /**
+     * Calls method for button B pressed
+     */
+    public void buttonB() {
+        current.buttonB();
+        current.changeState();
+    }
+
+    /**
+     * calls method for button C pressed
+     */
+    public void buttonC() {
+        current.buttonC();
+        current.changeState();
+    }
+
+    /**
+     * Returns the IClockControl
+     * @return IClockControl of this stopwatch
+     */
+    public IClockControl getControl() {
+        return this.control;
+    }
+
+    /**
     public void buttonPressed(ButtonID button) {
         if (state == 0) {
             if (button.equals(ButtonID.A)) {
@@ -135,8 +165,30 @@ public class StopwatchFirmware implements IFirmware {
             }
         }
     }
+    */
 
+    /**
+     * Calls the appropriate method if a button is pressed
+     * @param button Pressed Button
+     */
+    public void buttonPressed(ButtonID button) {
+        if (button.equals(ButtonID.A)) {
+            buttonA();
+            return;
+        }
+        if (button.equals(ButtonID.B)) {
+            buttonB();
+            return;
+        }
+        if (button.equals(ButtonID.C)) {
+            buttonC();
+        }
+    }
 
+    /**
+     * Gets an arry with button descriptions
+     * @return button descriptions
+     */
     public String[] getButtonDescriptions() {
         String[] out = new String[3];
 
